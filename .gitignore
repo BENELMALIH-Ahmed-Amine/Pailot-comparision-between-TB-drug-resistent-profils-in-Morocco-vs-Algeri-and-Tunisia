@@ -1,0 +1,17 @@
+# Data
+data_raw/
+data_processed/
+
+# RStudio user-specific files
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+
+# RStudio temporary files
+.Rapp.history
+*.Rproj.user
+
+# OS files
+.DS_Store
+Thumbs.db
