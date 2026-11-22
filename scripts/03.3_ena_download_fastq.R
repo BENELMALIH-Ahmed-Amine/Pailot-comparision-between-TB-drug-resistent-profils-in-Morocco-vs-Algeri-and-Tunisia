@@ -7,11 +7,15 @@ options(timeout = 600)
 # 1. Read the accession list
 accessions <- read.table(here("data_raw", "accessions_to_download.txt"), header = FALSE)$V1
 
+  # Define the absolute path to your external hard drive (if you're using one)
+  # (Replace the path below with your actual drive path.
+ext_drive_path <- "/media/ahmedamine/NewVolume/MagribTB_Data"
+
 # 2. Create the output directory (if it doesn't exist)
-dir.create(here("data_raw", "fastq_files"), showWarnings = FALSE)
+dir.create(ext_drive_path, showWarnings = FALSE)
 
 # 3. Select first 3 samples (a test batch)
-test_batch <- head(accessions, 3)
+test_batch <- head(accessions)
 
 # 4. Loop through the test batch
 for (acc in test_batch) {
@@ -41,14 +45,14 @@ for (acc in test_batch) {
     }
     
     # Define the local filename
-    dest_file <- here("data_raw", "fastq_files", paste0(acc, "_", i, ".fastq.gz"))
+    dest_file <- here(ext_drive_path, paste0(acc, "_", i, ".fastq.gz"))
     
     # Download with wget method (-c resumes the download)
-    download.file(url, dest_file, method = "wget", extra = "-c -q")
+    download.file(url, dest_file, method = "wget", extra = "-c")
     
     # Store the timing in a text log file 
     cat("Downloaded:", basename(dest_file), "at", format(Sys.time(), "%Y-%m-%d %H:%M:%S"), "\n", 
-        file = here("data_raw", "download_log.txt"), append = TRUE)
+        file = here(ext_drive_path, "download_log.txt"), append = TRUE)
   }
 }
 cat("Test batch complete!\n")

@@ -6,7 +6,10 @@ A pilot genomic survey of drug-resistance mutations in *Mycobacterium tuberculos
 
 ## Status
 - [x] Step 1: Data acquisition (Metadata cleaned and finalized)
-- [ ] Step 2: Downloading raw sequencing data
+- [x] Step 2: Downloading raw sequencing data
+        - [x] Tested - 3 samples.
+        - [x] Calculate total samples size.
+        + N.B.: You can use ncbi or ena based on your localisation
 - [ ] Step 3: Variant calling & annotation
 - [ ] Step 4: Lineage assignment
 - [ ] Step 5: Presence/absence tables
